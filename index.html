@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pizzacalc</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>ingredient</th>
+            <th>%</th>
+            <th>g</th>
+        </tr>
+        <tr>
+            <td>flour</td>
+            <td>100%</td>
+            <td><input type="number" />g</td>
+        </tr>
+        <tr>
+            <td>water</td>
+            <td><input type="number" value="65" /></td>
+            <td>
+                <p style="display: inline;">650</p>g
+            </td>
+        </tr>
+        <tr>
+            <td>yeast</td>
+            <td><input type="number" value="1.5" /></td>
+            <td>
+                <p style="display: inline;">15</p>g
+            </td>
+            <td>(<p style="display: inline;">3.75</p>tsp)</td>
+        </tr>
+        <tr>
+            <td>salt</td>
+            <td><input type="number" value="2" /></td>
+            <td>
+                <p style="display: inline;">20</p>g
+            </td>
+            <td>(<p style="display: inline;">2.50</p>tsp)</td>
+        </tr>
+        <tr>
+            <td>sugar</td>
+            <td><input type="number" value="2" /></td>
+            <td>
+                <p style="display: inline;">20</p>g
+            </td>
+            <td>(<p style="display: inline;">2.86</p>tsp)</td>
+        </tr>
+        <tr>
+            <td>oil</td>
+            <td><input type="number" value="5" /></td>
+            <td>
+                <p style="display: inline;">50</p>g
+            </td>
+            <td>(<p style="display: inline;">8.33</p>tsp)</td>
+        </tr>
+    </table>
+
+    <input type="button" value="run" />
+
+    <br>
+
+    <p><a href="indexp.html">pt</a>/<strong>en</strong></p>
+
+    <script>
+        var table = document.querySelector('table');
+        var inputs = table.querySelectorAll('input[type="number"]');
+        var p = table.querySelectorAll('p');
+        var button = document.querySelector('input[type="button"]');
+
+        button.addEventListener('click', function () {
+            flour = inputs[0].value;
+            if (flour) {
+                p[0].innerHTML = inputs[1].value * flour / 100; //water g
+                p[1].innerHTML = inputs[2].value * flour / 100; //yeast g
+                p[3].innerHTML = inputs[3].value * flour / 100; //salt g
+                p[5].innerHTML = inputs[4].value * flour / 100; //sugar g
+                p[7].innerHTML = inputs[5].value * flour / 100; //oil g
+
+                p[2].innerHTML = (p[1].innerHTML / 4).toFixed(2); //1tsp yeast = 4g
+                p[4].innerHTML = (p[3].innerHTML / 8).toFixed(2); //1tsp salt = 8g
+                p[6].innerHTML = (p[5].innerHTML / 7).toFixed(2); //1tsp sugar = 7g
+                p[8].innerHTML = (p[7].innerHTML / 6).toFixed(2); //1tsp oil = 6g
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
